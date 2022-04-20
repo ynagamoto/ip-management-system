@@ -1,0 +1,19 @@
+version: '3'
+services:
+  flask:
+    depends_on:
+      - mariadb
+    build: ./flask
+    container_name: flask
+    restart: always
+    ports: 
+      - "80:8080"
+    stdin_open: true
+    tty: true
+
+  mariadb:
+    build: ./mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root00 # 注意
