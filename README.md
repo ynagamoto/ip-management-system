@@ -10,4 +10,17 @@
 - ドメインを設定するとDNSの設定を変更する機能を追加する
 
 ## Now
-- 1ヶ月くらいは3年生向けPython演習のお手本置き場として使う(ログイン処理等共通の機能があるため)
+- 1ヶ月くらいは3年生向けPython演習の見本置き場として使う(ログイン処理等共通の機能があるため)
+
+## 使い方(見本プログラム)
+- 実行にはDockerおよびdocker-composeが必要です
+- リポジトリからクローン
+  -  `git clone https://github.com/munvei/ip-management-system.git`
+- 本ディレクトリへ移動
+  - `ip-management-system`
+- ビルド&バックグラウンドで実行
+  -  `docker-compose --build -d up`
+- 停止&削除
+  -  `docker-compose down`
+- バックグラウンドで実行した場合のログは以下で確認できます
+  -  `docker-compose logs`
