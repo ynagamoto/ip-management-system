@@ -19,7 +19,7 @@
 - 本ディレクトリへ移動
   - `ip-management-system`
 - ビルド&バックグラウンドで実行
-  -  `docker-compose --build -d up`
+  -  `docker-compose up --build -d `
 - 停止&削除
   -  `docker-compose down`
 - バックグラウンドで実行した場合のログは以下で確認できます
