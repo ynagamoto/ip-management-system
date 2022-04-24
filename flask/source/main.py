@@ -11,6 +11,20 @@ app.permanent_session_lifetime = timedelta(minutes=3) # session が維持され�
 def index():
     return render_template('index.html')
 
+@app.route('/get')
+def get():
+  msg = request.args.get('msg', '') 
+  return render_template('get.html', msg=msg)
+
+@app.route('/post', methods=['GET', 'POST'])
+def post():
+  if request.method == 'POST':
+    name = request.form.get('name')
+    passwd = request.form.get('passwd')
+    return render_template('post.html', name=name, passwd=passwd)
+  else:
+    return render_template('post.html')
+
 @app.route('/useradd', methods=['GET', 'POST']) 
 def useradd():
   if request.method == "POST":
@@ -18,7 +32,6 @@ def useradd():
     passwd = request.form['passwd']
     if name != "" and passwd != "" : # session に追加
       AddUser(name, passwd)
-
   return render_template('useradd.html', users=GetUsers())
 
 
@@ -35,7 +48,6 @@ def login():
         session['name'] = name
         session['passwd'] = passwd
         logined = True
-
   if logined : # ログイン済み
     return redirect(url_for('mypage'))
   else : # GET の時, name と passwd のどちらかが空の場合はログインページ
@@ -60,4 +72,4 @@ def logout():
     return redirect(url_for('login'))
 
 
-app.run(host="0.0.0.0", port=8080, debug=False, threaded=True)
+app.run(host="0.0.0.0", port=8080, debug=True, threaded=True)

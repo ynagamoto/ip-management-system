@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>User Add</title>
+    <title>Post</title>
   </head>
   <body>
-    <h1>User Add Page</h1>
+    <h1>Post User Data</h1>
     <form method="post" action="">
       <table>
         <tr>
@@ -19,21 +19,16 @@
         </tr>
       </table>
     </form>
-    <h2>↓Database↓</h2>
+    <h2>↓User Data↓</h2>
     <table>
       <tr>
-        <th>ID</th>
         <th>名前</th>
         <th>パスワード</th>
       </tr>
-      {% for user in users %}
       <tr>
-        <td>{{ user["id"] }}</td>
-        <td>{{ user["name"] }}</td>
-        <td>{{ user["passwd"] }}</td>
+        <td>{{ name }}</td>
+        <td>{{ passwd }}</td>
       </tr>
-      {% endfor %}
     </table>
-
   </body>
 </html>
