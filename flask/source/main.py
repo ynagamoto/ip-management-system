@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from datetime import timedelta
 
-from modules import GetUsers, AddUser
+from modules import GetUsers, AddUser, CompPw
 
 app = Flask(__name__, static_folder='./templates', static_url_path='')
 app.secret_key = 'hoge' # session を暗号化するために必要
@@ -42,12 +42,13 @@ def login():
     logined = True
   else : # 未ログイン
     if request.method == "POST" : # POST の時はログイン処理
-      name = request.form['name']
+      uid = request.form['uid']
       passwd = request.form['passwd']
-      if name != "" and passwd != "" : # session に追加
-        session['name'] = name
-        session['passwd'] = passwd
-        logined = True
+      if uid != "" and passwd != "" : # session に追加
+        name = CompPw(uid, passwd)
+        if name != "":
+          session['name'] = name
+          logined = True
   if logined : # ログイン済み
     return redirect(url_for('mypage'))
   else : # GET の時, name と passwd のどちらかが空の場合はログインページ
@@ -57,7 +58,7 @@ def login():
 @app.route('/mypage')
 def mypage():
   if 'name' in session : # ログイン中
-    return render_template('mypage.html', name=session['name'], passwd=session['passwd'])  
+    return render_template('mypage.html', name=session['name'])  
   else :
     return redirect(url_for('login'))
 
@@ -66,7 +67,6 @@ def mypage():
 def logout():
   if 'name' in session : # ログイン中
     session.pop('name', None)
-    session.pop('passwd', None)
     return render_template('logout.html')
   else : # ログイン中でない場合はログインページへ
     return redirect(url_for('login'))

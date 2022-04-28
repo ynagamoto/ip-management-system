@@ -35,23 +35,24 @@ def AddUser(name, passwd):
       cursor.execute(sql, (name, hashpw))    
       connection.commit()
 
-def GetHash(uid):
-  sql = "SELECT passwd FROM &s" % user_table_name
+def GetNameAndHash(uid):
+  sql = "SELECT name, passwd FROM %s" % user_table_name
   sql = sql + " WHERE id = %s;"
+  connection = GetConnection()
   with connection:
     with connection.cursor() as cursor:
       cursor.execute(sql, uid)
       result = cursor.fetchone()
-  return result['passwd']
+  return [result['name'], result['passwd']]
 
 def Pw2Hash(passwd):
   hashpw = hashlib.pbkdf2_hmac('sha3-512', bytes(passwd, 'utf-8'), b'', 1000).hex()
   return hashpw
 
 def CompPw(uid, passwd):
-  hashpw = GetHash(uid)
+  name, hashpw = GetNameAndHash(uid)
   tmp_hash = Pw2Hash(passwd)
   if tmp_hash == hashpw:
-    return True
+    return name
   else:
-    return False 
+    return ""

@@ -44,7 +44,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'hoge','hoge_passwd'),(2,'fuga','fuga_passwd'),(3,'hogefuga','hogefuga_passwd');
+INSERT INTO `users` VALUES (0,'admin','1f697dfe0b765d04846057b8e835d734e5a487b04d7a59ab28e0f46745f597cb3d850d008f1b86de0b1a85d6d3ff91e1703b6d7422d2974c604611f967b7eb47');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
