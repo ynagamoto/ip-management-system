@@ -24,3 +24,5 @@
   -  `docker-compose down`
 - バックグラウンドで実行した場合のログは以下で確認できます
   -  `docker-compose logs`
+- Webページ
+  - [localhost](http://localhost) 

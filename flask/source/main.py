@@ -72,4 +72,4 @@ def logout():
     return redirect(url_for('login'))
 
 
-app.run(host="0.0.0.0", port=8080, debug=True, threaded=True)
+app.run(host="0.0.0.0", port=8080, debug=False, threaded=True)

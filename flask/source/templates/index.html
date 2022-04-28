@@ -6,6 +6,28 @@
   </head>
   <body>
     <h1>Index Page</h1>
-    <p>Hellow! This is index page.</p>
+    <p>Hello! This is index page.</p>
+    <table>
+      <tr>
+        <td>GET</td>
+        <td><a href="{{ url_for('get') }}">get.html</a></td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td><a href="{{ url_for('post') }}">post.html</a></td>
+      </tr>
+      <tr>
+        <td>ユーザの追加</td>
+        <td><a href="{{ url_for('useradd') }}">useradd.html</a></td>
+      </tr>
+      <tr>
+        <td>Log in</td>
+        <td><a href="{{ url_for('login') }}">login.html</a></td>
+      </tr>
+      <tr>
+        <td>MyPage</td>
+        <td><a href="{{ url_for('mypage') }}">mypage.html</a></td>
+      </tr>
+    </table>
   </body>
 </html>
