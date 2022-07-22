@@ -17,7 +17,7 @@
 - リポジトリからクローン
   -  `git clone https://github.com/munvei/ip-management-system.git`
 - 本ディレクトリへ移動
-  - `ip-management-system`
+  - `cd ip-management-system`
 - ビルド&バックグラウンドで実行
   -  `docker-compose up --build -d `
 - 停止&削除
